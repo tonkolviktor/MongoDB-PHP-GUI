@@ -34,6 +34,10 @@ define('MPG_DEV_MODE', false);
  */
 define('MPG_ABS_PATH', __DIR__);
 
+if (getenv("HTTP_HOST") !== false) {
+  $_SERVER['HTTP_HOST'] = getenv("HTTP_HOST");
+}
+
 $baseUrl = '//' . $_SERVER['HTTP_HOST'];
 $serverPath = str_replace('\\', '/', dirname($_SERVER['REQUEST_URI']));
 $serverPath = ( $serverPath === '/' ) ? '' : $serverPath;
