@@ -53,23 +53,25 @@ class LoginController extends Controller {
     public function renderViewAction() : Response {
 
         if ( isset($_POST['login']) ) {
-
+            print("login")
             $errors = $this->processFormData();
             
             if ( count($errors) >= 1 ) {
-
+                print("errors")
+                print($errors)
                 return new Response(200, $this->renderView('login', [
                     'errors' => $errors
                 ]));
                 
             } else {
-
+                print("login success")
                 $_SESSION['mpg']['user_is_logged'] = true;
                 Controller::redirectTo('/index');
 
             }
 
         } else {
+            print("redirect no login")
             return new Response(200, $this->renderView('login'));
         }
 
