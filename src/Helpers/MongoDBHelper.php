@@ -55,7 +55,7 @@ class MongoDBHelper {
         if ( isset($_SESSION['mpg']['mongodb_database']) ) {
             $clientUri .= '/' . $_SESSION['mpg']['mongodb_database'];
         }
-
+        $clientUri = $_ENV['mpg_url'];
         return new Client($clientUri);
 
     }
