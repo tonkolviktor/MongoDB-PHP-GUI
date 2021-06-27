@@ -7,13 +7,18 @@ use Capsule\Response;
 class LoginController extends Controller {
 
     public static function ensureUserIsLogged() {
-
-        if ( !isset($_SESSION['mpg']['user_is_logged']) ) {
-
-            Controller::redirectTo('/login#');
-
-        }
-
+//
+//         if ( !isset($_SESSION['mpg']['user_is_logged']) ) {
+//
+//             Controller::redirectTo('/login#');
+//
+//         }
+            $_SESSION['mpg'] = [];
+            $_SESSION['mpg']['mongodb_user'] = $_ENV['mpg_user'];
+            $_SESSION['mpg']['mongodb_password'] = $_ENV['mpg_password'];
+            $_SESSION['mpg']['mongodb_host'] = $_ENV['mpg_host'];
+            $_SESSION['mpg']['mongodb_port'] = $_ENV['mpg_port'];
+            $_SESSION['mpg']['mongodb_database'] = $_ENV['mpg_database'];
     }
 
     public function processFormData() : array {
