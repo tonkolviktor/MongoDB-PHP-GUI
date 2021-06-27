@@ -4,12 +4,12 @@ use Limber\Application;
 use Capsule\Factory\ServerRequestFactory;
 use Limber\Exceptions\NotFoundHttpException;
 
+
+
+session_start();
 if (getenv("HTTP_HOST") !== false) {
   $_SERVER['HTTP_HOST'] = getenv("HTTP_HOST");
 }
-
-session_start();
-
 /**
  * Application name.
  * 
