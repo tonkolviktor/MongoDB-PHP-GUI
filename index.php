@@ -4,6 +4,10 @@ use Limber\Application;
 use Capsule\Factory\ServerRequestFactory;
 use Limber\Exceptions\NotFoundHttpException;
 
+if (getenv("HTTP_HOST") !== false) {
+  $_SERVER['HTTP_HOST'] = getenv("HTTP_HOST");
+}
+
 session_start();
 
 /**
@@ -34,9 +38,6 @@ define('MPG_DEV_MODE', false);
  */
 define('MPG_ABS_PATH', __DIR__);
 
-if (getenv("HTTP_HOST") !== false) {
-  $_SERVER['HTTP_HOST'] = getenv("HTTP_HOST");
-}
 
 $baseUrl = '//' . $_SERVER['HTTP_HOST'];
 $serverPath = str_replace('\\', '/', dirname($_SERVER['REQUEST_URI']));
@@ -55,7 +56,7 @@ define('MPG_SERVER_PATH', $serverPath);
  * 
  * @var string
  */
-define('MPG_BASE_URL', $baseUrl);
+define('MPG_BASE_URL', $serverPath);
 
 require __DIR__ . '/autoload.php';
 require __DIR__ . '/routes.php';
