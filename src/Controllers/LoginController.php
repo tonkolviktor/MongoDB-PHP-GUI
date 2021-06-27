@@ -19,6 +19,7 @@ class LoginController extends Controller {
             $_SESSION['mpg']['mongodb_host'] = $_ENV['mpg_host'];
             $_SESSION['mpg']['mongodb_port'] = $_ENV['mpg_port'];
             $_SESSION['mpg']['mongodb_database'] = $_ENV['mpg_database'];
+            $_SESSION['mpg']['user_is_logged'] = true;
     }
 
     public function processFormData() : array {
