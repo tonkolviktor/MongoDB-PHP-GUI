@@ -4,8 +4,8 @@ use Limber\Application;
 use Capsule\Factory\ServerRequestFactory;
 use Limber\Exceptions\NotFoundHttpException;
 
-
-
+ini_set("session.cookie_lifetime", 21600);
+ini_set("session.gc_maxlifetime", 21600);
 session_start();
 if (getenv("HTTP_HOST") !== false) {
   $_SERVER['HTTP_HOST'] = getenv("HTTP_HOST");
